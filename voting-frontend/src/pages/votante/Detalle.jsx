@@ -8,7 +8,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Spinner from '@/components/Spinner'
-
+import { toast } from 'react-hot-toast'
 // 🔽 Cambia a false cuando tengas backend
 const MOCK_MODE = true
 
@@ -54,16 +54,14 @@ export default function Detalle() {
 
     try {
       if (MOCK_MODE) {
-        alert(`(mock) voto emitido a opción ${opcionId}`)
+        toast.success('(mock) Voto emitido')
       } else {
         await votar(opcionId)
-        alert('¡Voto registrado!')
+        toast.success('¡Voto registrado!')
       }
       navigate(`/resultados/${id}`)
     } catch {
-      alert('No se pudo votar. Intenta de nuevo.')
-    } finally {
-      setSending(false)
+      toast.error('No se pudo votar')
     }
   }
 

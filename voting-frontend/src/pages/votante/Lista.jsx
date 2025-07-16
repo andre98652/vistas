@@ -11,6 +11,13 @@
  *   • Asegúrate de tener VITE_API_URL en .env
  */
 
+import Card      from '@/components/Card'
+import Button    from '@/components/Button'
+import { ArrowRightIcon } from '@heroicons/react/24/solid'
+
+
+
+
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Spinner from '@/components/Spinner'
@@ -94,25 +101,22 @@ export default function Lista() {
       )}
 
       {/* 8. Tarjetas de votaciones */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {votaciones.map((v) => (
-          <Link
-            key={v.id}
-            to={`/votacion/${v.id}`}
-            className="border p-4 rounded hover:shadow transition"
-          >
-            <h3 className="font-bold text-lg">{v.titulo}</h3>
-            <p className="text-xs text-gray-500 mb-2">{v.depto}</p>
-            <span
-              className={
-                v.estado === 'ACTIVA'
-                  ? 'text-green-600 text-xs'
-                  : 'text-red-600 text-xs'
-              }
-            >
+          <Card as={Link} to={`/votacion/${v.id}`}>
+            <span className="absolute top-4 right-4 text-xs px-2 py-1 rounded-full
+                  bg-green-100 text-green-700">
               {v.estado}
             </span>
-          </Link>
+
+            <h3 className="text-lg font-semibold text-gray-800">{v.titulo}</h3>
+            <p className="text-sm text-gray-500 mb-4">{v.depto}</p>
+
+            <Button variant="primary" className="w-full mt-2 justify-between">
+              Entrar <ArrowRightIcon className="w-4 h-4 ml-2" />
+            </Button>
+          </Card>
+
         ))}
       </div>
     </div>
