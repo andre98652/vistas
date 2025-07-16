@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+/* fuerza a incluir la clase bg-primary */
+@layer utilities {
+  .bg-primary {
+    @apply bg-[#003366];
+  }
+}

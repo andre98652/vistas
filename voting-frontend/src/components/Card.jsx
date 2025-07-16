@@ -6,7 +6,7 @@ export default function Card({ children, className, ...rest }) {
     <motion.div
       whileHover={{ y: -4, boxShadow: '0 10px 15px rgba(0,0,0,0.1)' }}
       className={clsx(
-        'rounded-2xl bg-white shadow-md p-6 transition',
+        'relative rounded-2xl bg-white shadow-md p-6 transition',
         className
       )}
       {...rest}

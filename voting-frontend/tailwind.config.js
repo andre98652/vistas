@@ -1,15 +1,21 @@
 import { fontFamily } from 'tailwindcss/defaultTheme'
-import { defineConfig } from 'vite-plugin-windicss' // si usas Windi ignora esta línea
 
-export default {
-  darkMode: 'class',          // habilita Dark Mode por clase
-  content: ['./index.html', './src/**/*.{jsx,js,ts,tsx}'],
+
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
+module.exports = {
+  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+  safelist: [
+    'bg-primary',          // ⬅️  di a Tailwind que siempre la incluya
+    'text-primary',
+  ],
   theme: {
     extend: {
       colors: {
-        primary:   '#003366',  // azul UNSA
-        secondary: '#ffd54f',  // amarillo
-        accent:    '#e53935',  // rojo
+        primary: '#003366',
+        secondary: '#ffd54f',
+        accent: '#e53935',
       },
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
